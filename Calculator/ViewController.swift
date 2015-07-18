@@ -25,6 +25,13 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func appendDot() {
+        if (display.text!.rangeOfString(".") == nil) {
+            display.text = display.text! + "."
+        }
+    }
+    
+    
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         
@@ -52,6 +59,7 @@ class ViewController: UIViewController {
         calculatorBrain.operand2 = displayValue
         displayValue = calculatorBrain.calculate()
         isUserInTheMiddleOfTypingNumber = false
+        calculatorBrain.operation = "="
         
     }
 }
