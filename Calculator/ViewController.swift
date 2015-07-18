@@ -8,25 +8,22 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var display: UILabel!
     
-    var firstDigit: Bool = true
-    var operand1: Double = 0
-    var operation: String = "="
+    var isUserInTheMiddleOfTypingNumber: Bool = false
+    let calculatorBrain: CalculatorBrain = CalculatorBrain()
     
     var displayValue: Double {
         get {
             return (display.text! as NSString).doubleValue
         }
-        
         set{
             display.text = "\(newValue)"
         }
     }
-    
-    var isUserInTheMiddleOfTypingNumber: Bool = false
     
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
@@ -40,19 +37,20 @@ class ViewController: UIViewController {
     }
 
     @IBAction func performOperation(sender: UIButton) {
-        firstDigit = false
-        isUserInTheMiddleOfTypingNumber = false
-        operation = sender.currentTitle!
-        operand1 = displayValue
+        
+        if isUserInTheMiddleOfTypingNumber {
+            isUserInTheMiddleOfTypingNumber = false
+            calculatorBrain.operand1 = displayValue
+        }
+        
+        calculatorBrain.operation = sender.currentTitle!
+        display.text = sender.currentTitle!
     }
     
     @IBAction func calculate(sender: UIButton) {
-        switch operation{
-            case "+": displayValue = displayValue + operand1
-            case "-": displayValue = operand1 - displayValue
-            default: displayValue = 0
-        }
         
+        calculatorBrain.operand2 = displayValue
+        displayValue = calculatorBrain.calculate()
         isUserInTheMiddleOfTypingNumber = false
         
     }
