@@ -77,7 +77,6 @@
 		C180ED751B5A5E3700027EEE /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				C180ED781B5A5E3700027EEE /* AppDelegate.swift */,
 				C180ED7A1B5A5E3700027EEE /* ViewController.swift */,
 				C180ED7C1B5A5E3700027EEE /* Main.storyboard */,
 				C180ED7F1B5A5E3700027EEE /* Images.xcassets */,
@@ -90,6 +89,7 @@
 		C180ED761B5A5E3700027EEE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C180ED781B5A5E3700027EEE /* AppDelegate.swift */,
 				C180ED771B5A5E3700027EEE /* Info.plist */,
 			);
 			name = "Supporting Files";
