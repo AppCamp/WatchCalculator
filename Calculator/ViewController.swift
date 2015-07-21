@@ -10,6 +10,7 @@ import UIKit
 
 
 class ViewController: UIViewController {
+    
 
     @IBOutlet weak var display: UILabel!
     
@@ -61,6 +62,10 @@ class ViewController: UIViewController {
         isUserInTheMiddleOfTypingNumber = false
         calculatorBrain.operation = "="
         
+    }
+    
+    func doCalculations() -> Double{
+        return calculatorBrain.calculate()
     }
 }
 
